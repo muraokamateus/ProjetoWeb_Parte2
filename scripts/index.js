@@ -27,7 +27,7 @@ document.querySelector('#pesquisa-api-b').addEventListener('click', function() {
             for(var i = 0; i<dados.length; i++){
                 var artigo = document.createElement('p');
                 var link = document.createElement('a');
-                artigo.innerHTML="Titulo: "+dados[i].title;
+                artigo.innerHTML=dados[i].title;
                 link.href = dados[i].url;
                 link.appendChild(artigo);
                 resultados.appendChild(link);

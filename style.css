@@ -1,0 +1,200 @@
+@font-face {
+    font-family: "nunito";
+    src: url(fonts/NunitoSans-Regular.ttf);
+}
+@font-face {
+    font-family: "nunitobold900";
+    src: url(fonts/NunitoSans-ExtraBold.ttf);
+}
+
+/*
+////////////////////////////////////////////////////
+                    WEBSITE NORMAL
+////////////////////////////////////////////////////
+*/
+
+body{
+    margin: 0;
+    color: #353a40;
+}
+
+#wrapper{
+    background-image: url(img/gallaxy.svg);
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+header{
+    flex: 1;
+    display: flex;
+    padding: 16px 32px;
+
+}
+#header-left{
+    width: auto;
+    
+}
+#header-mid{
+    flex: 1;
+    display: flex;
+}
+#header-right{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo-img{
+    height: 41.08px;
+    width: 128px;
+}
+
+#hamburguer{
+    display: none;
+}
+
+.button-text{
+    font-family: 'nunito';
+    font-size: 16px;
+    font-weight: 400;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    display: block;
+    width: max-content;
+}
+.button-text2{
+    font-family: 'nunito';
+    font-size: 16px;
+    font-weight: 700;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    display: block;
+    width: max-content;
+    color: #ffffff
+}
+
+.button-box{
+    background-color: #f04e23;
+    border: 1px solid #f04e23;
+    color: #fff;
+    border-radius: 6px;
+    padding-inline-start: 20px; 
+    padding-inline-end: 20px;
+}
+
+
+/*Main/Corpo*/
+    main{
+        margin: none;
+        border: none;
+        padding: 110px 32px 0px 32px;/*80px 32px 0px 32px;*/
+
+    }
+
+/* TEXTO */
+.hero-container{
+    width: 100%;
+    /*max-width: ;*/
+    display: flex;
+}
+
+
+h2{
+    font-family: 'nunito';
+    font-weight: 400;
+    font-size: 47.12263200000001px;
+    display: inline-block;
+    text-align: left;
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+
+
+
+/*IMAGEM*/
+.mobile-image{
+    display: none;
+}
+.desktop-image{
+    width: 528px;
+    height: 528px;
+    margin-left: 400px;
+}
+
+
+/*
+////////////////////////////////////////////////////
+                    MOBILE
+////////////////////////////////////////////////////
+*/
+@media screen and (max-width: 480px){
+    .logo-img{
+        display: block;
+    }
+}
+@media screen and (max-width: 480px){
+    main{
+        padding: 90px 14px 0px 14px;
+    }
+    header{
+        padding: 14px 28px;
+    }
+
+    #wrapper{
+        width: 100%;
+        background-image:linear-gradient(180deg,hsla(0,0%,100%,0),#fff), url(img/gallaxy.svg);
+        background-position: top;
+        background-size:100%;
+        background-repeat: no-repeat;
+    }
+}
+/*TextoCorpo*/
+@media screen and (max-width: 480px){
+    .mobile-image{
+        flex: 1;
+        width: 332px;
+        height: 124.5px;
+    }
+    
+    .desktop-image{
+        display: none;
+    }
+    /*///////////////NAV//////////////*/
+    .logo-img{
+        width: 112px;
+        height: 35.95px;
+        align-items: center;
+    }
+
+    #header-mid{
+        display: none;
+    }
+    #header-right{
+        display: none;
+    }
+
+    #hamburguer{
+        display: flex ;
+        flex: 2;
+        justify-content: flex-end;
+        vertical-align: baseline;
+        padding-top: 10px;
+    }
+    .hamburguer-icon{
+        border-top: 1px;
+        vertical-align:baseline;
+        height: 18px;
+        width: 18px;
+        display: inline-flex;
+        overflow: visible;
+
+    }
+}

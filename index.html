@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hotmart — Onde você aprende, ensina e empreende online</title>
+        <link rel="icon" href="img/icon/favicon.ico">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="verifications.css"/>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="control.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <div id="header-left">
+                    <div class="logo">
+                        <img class="logo-img" src="img/hotmart-logo.svg">
+                    </div>
+                </div>
+                <div id="header-mid">
+                    <div class="button">
+                        <span class="button-text">Produtores</span>
+                    </div>
+                    <div class="button">
+                        <span class="button-text">Afiliados</span>
+                    </div>
+                    <div class="button">
+                        <span class="button-text">Soluções</span>
+                    </div>
+                    <div class="button">
+                        <span class="button-text">Hotmart Sparkle</span>
+                    </div>
+                    <div class="button">
+                        <span class="button-text">Comunidade</span>
+                    </div>
+                    <div class="button">
+                        <span class="button-text">Comprar</span>
+                    </div>
+                </div>
+                <div id="header-right">
+                    <div id="login-header" class="login-cadastro">
+                        <span id="logON-button" class="logText display-show"><span class="text-control">Entre</span></span>
+                        <span id="logOFF-button" class="logText display-hidden"><span class="text-control">Sair</span></span>
+                    </div>
+                    <div class="register">
+                        <div class = "button-box">
+                            <span class="button-text2">Cadastre-se</span>
+                        </div>   
+                    </div>
+                </div>
+                <div id="hamburguer">
+                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg"viewBox ="0 0 448 512" class="hamburguer-icon">
+                    <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" data-v-fc2bf950="" class=""></path>
+                    </svg>
+                </div>
+            </header>
+            <main>
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <div id="verify" class="display-show">
+                            <form class="form" id="login">
+                                <h1 class="form-title">Login</h1>
+                                <div class="form-message form-message-error"></div>
+                                <div class="form-input-group">
+                                    <input id = "login-login" type="text" class="form-input" autofocus placeholder="Endereço de E-mail">
+                                </div>
+                                <div class="form-input-group">
+                                    <input id = "senha-login" type="password" class="form-input form-input-error" autofocus placeholder="Senha">
+                                </div>
+                                <div id = "mensagemErro-login" class="form-input-error-message"></div>
+                                <button class="form-button" type="submit">Continue</button>
+                                <p class="form-text" style="padding-top: 1rem;">
+                                    <a href="#" class="form-link">Esqueceu sua senha?</a>
+                                </p>
+                                <p class="form-text" style="padding-top: 1rem;">
+                                    <a class="form-link" href="./" id="linkCreateAccount">Não possui uma conta? Crie uma conta</a>
+                                </p>
+                            </form>
+                           <form class="form form-hidden" id="createAccount">
+                                <h1 class="form-title">Crie sua conta</h1>
+                                <div class="form-message form-message-error"></div>
+                                <div class="form-input-group">
+                                    <input id= "login-cadastro" type="text" class="form-input" autofocus placeholder="Endereço de E-mail">
+                                </div>
+                                <div class="form-input-group">
+                                    <input id="senha-cadastro" type="password" class="form-input form-input-error" autofocus placeholder="Senha">
+                                </div>
+                                <div class="form-input-group">
+                                    <input id ="senha2-cadastro" type="password" class="form-input form-input-error" autofocus placeholder="Confirme sua senha senha">
+                                </div>
+                                <div id="mensagemSucesso-cadastro" class="form-input-sucess-message"></div>
+                                <div id="mensagemErro-cadastro" class="form-input-error-message"></div>
+                                <button class="form-button" type="submit">Continue</button>
+                                <p class="form-text" style="padding-top: 1rem;">
+                                    <a class="form-link" href="./" id="linkLogin">Já tem uma conta? Entre</a>
+                                </p>
+                            </form>
+                        </div>
+                            <div class="form display-hidden api-container" id="api">
+                                <h1 class="form-title titulo">API-Busca de Artigos</h1>
+                                <p class="subtitle">Digite palavra-chave para buscar artigo sobre:</p>
+                                <input id= "pesquisa-api" type="text" class="form-input" autofocus placeholder="Palavra-chave">
+                                <button id="pesquisa-api-b" class="form-button b-config" type="submit">Pesquisar</button>
+                                <div id ="error" class="text-error-api" ></div>
+                            </div>
+
+                    </div>
+                    <div class="hero-placeholder display-show" id ="home-hero">
+                            <img class="desktop-image" src="img/home-hero__image.png" alt="Hotmart" > 
+                    </div>
+                    <div class="display-hidden" id ="api-resultados"></div>
+                </div>
+            </main>
+        </div>
+        <script  src="/scripts/control.js"></script>
+        <script src="/scripts/verifications.js"></script>
+        <script src="/scripts/index.js"></script>
+    </body>
+</html>

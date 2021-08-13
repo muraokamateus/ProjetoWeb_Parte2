@@ -19,7 +19,7 @@ document.querySelector('#pesquisa-api-b').addEventListener('click', function() {
         mensagemError_text.innerHTML='A pesquisa deve conter pelo menos 1 caracter';
         mensagemErro.appendChild(mensagemError_text);
     }else{
-        axios.get('http://localhost:3000/api/article/search', {
+        axios.get('https://yamym-web-service.herokuapp.com/api/article/search', {
             params:{
                 title: query,
                 token: localStorage.getItem('token')
@@ -71,7 +71,7 @@ document.querySelector('#register-api-b').addEventListener('click', function() {
         mensagemErro.appendChild(mensagemError_text);
     }
     else{
-        axios.post('http://localhost:3000/api/article/register',{
+        axios.post('https://yamym-web-service.herokuapp.com/api/article/register',{
             title: title,
             link: link,
             token: localStorage.getItem('token')

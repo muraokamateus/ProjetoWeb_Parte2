@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fieldPassword = document.getElementById("senha-login");
         
         if(verificationEmail(fieldEmail) && verificationPassword(fieldPassword)){
-            axios.get('http://localhost:3000/api/user/login', {
+            axios.get('https://yamym-web-service.herokuapp.com/api/user/login', {
                 params:{
                     email: document.getElementById("login-login").value,
                     password: document.getElementById("senha-login").value
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(verificationEmail(fieldEmail) && verificationPassword(fieldPassword) && matchPassword(fieldPassword, field_passwordMatch)){
 
-            axios.post('http://localhost:3000/api/user/register',{
+            axios.post('https://yamym-web-service.herokuapp.com/api/user/register',{
                 email: document.getElementById("login-cadastro").value,
                 password: document.getElementById("senha-cadastro").value
             })

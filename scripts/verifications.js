@@ -70,14 +70,16 @@ document.addEventListener("DOMContentLoaded", () => {
         fieldPassword = document.getElementById("senha-login");
         
         if(verificationEmail(fieldEmail) && verificationPassword(fieldPassword)){
-            axios.post('https://reqres.in/api/login',{
-                email: document.getElementById("login-login").value,
-                password: document.getElementById("senha-login").value
+            axios.get('http://localhost:3000/api/user/login', {
+                params:{
+                    email: document.getElementById("login-login").value,
+                    password: document.getElementById("senha-login").value
+                }
             })
             .then(function (response){ 
                 console.log(response);
                 if(response.status ===200){
-                    localStorage.setItem('logado',1)
+                    localStorage.setItem('token', response.data.data)
                     logON();
                 }
             })
@@ -109,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(verificationEmail(fieldEmail) && verificationPassword(fieldPassword) && matchPassword(fieldPassword, field_passwordMatch)){
 
-            axios.post('https://reqres.in/api/register',{
+            axios.post('http://localhost:3000/api/user/register',{
                 email: document.getElementById("login-cadastro").value,
                 password: document.getElementById("senha-cadastro").value
             })

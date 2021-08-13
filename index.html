@@ -98,13 +98,26 @@
                             </form>
                         </div>
                             <div class="form display-hidden api-container" id="api">
-                                <h1 class="form-title titulo">SpaceFlight News API</h1>
-                                <p class="subtitle">Digite a palavra-chave(em inglês) para buscar artigo sobre o espaço sideral:</p>
+                                <h1 class="form-title titulo">YaMyM Article API</h1> 
+                                <p class="subtitle">Digite a palavra-chave para buscar um artigo:</p>
                                 <input id= "pesquisa-api" type="text" class="form-input" autofocus placeholder="Palavra-chave">
                                 <button id="pesquisa-api-b" class="form-button b-config" type="submit">Pesquisar</button>
                                 <div id ="error" class="text-error-api" ></div>
+                                <p class="form-text" style="padding-top: 1rem;">
+                                    <a class="form-link" href="./" id="linkRegistroApi">Registrar um artigo</a>
+                                </p>
+                            </div> 
+                            <div class="form display-hidden api-container" id="api-register">
+                                <h1 class="form-title titulo">YaMyM Article API</h1>
+                                <p class="subtitle">Insira o titulo e o link para o artigo:</p>
+                                <input id= "register-title-api" type="text" class="form-input" autofocus placeholder="Titulo">
+                                <input id= "register-link-api" type="text" class="form-input" autofocus placeholder="Link">
+                                <button id="register-api-b" class="form-button b-config" type="submit">Registrar</button>
+                                <div id ="error-register" class="text-error-api" ></div>
+                                <p class="form-text" style="padding-top: 1rem;">
+                                    <a class="form-link" href="./" id="linkPesquisaApi">Pesquisar um artigo</a>
+                                </p>
                             </div>
-
                     </div>
                     <div class="hero-placeholder display-show" id ="home-hero">
                             <img class="desktop-image" src="img/home-hero__image.png" alt="Hotmart" > 

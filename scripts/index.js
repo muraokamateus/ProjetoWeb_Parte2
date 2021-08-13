@@ -1,4 +1,4 @@
-if(localStorage.getItem("logado") !== null){
+if(localStorage.getItem("token") !== null){
     logON();
 }else{
     logOFF();
@@ -12,31 +12,88 @@ document.querySelector('#pesquisa-api-b').addEventListener('click', function() {
     var resultados = document.getElementById('api-resultados');
     
     resultados.innerHTML='';
+    mensagemErro.innerHTML = '';
     
     if(query.length<1){
-        mensagemErro.innerHtml = '';
+        mensagemErro.innerHTML = '';
         mensagemError_text.innerHTML='A pesquisa deve conter pelo menos 1 caracter';
         mensagemErro.appendChild(mensagemError_text);
-
     }else{
-
-        axios.get('https://api.spaceflightnewsapi.net/v3/articles?title_contains='+query)
+        axios.get('http://localhost:3000/api/article/search', {
+            params:{
+                title: query,
+                token: localStorage.getItem('token')
+            }
+        })
         .then(function (response) {
             console.log(response);
-            var dados = response.data;
-            for(var i = 0; i<dados.length; i++){
-                var artigo = document.createElement('p');
-                var link = document.createElement('a');
-                artigo.innerHTML=dados[i].title;
-                link.href = dados[i].url;
-                link.appendChild(artigo);
-                resultados.appendChild(link);
+            if(response.status === 201){
+                mensagemErro.innerHTML = '';
+                mensagemError_text.innerHTML= response.data.error;
+                mensagemErro.appendChild(mensagemError_text);
+            }else{
+                var dados = response.data.data;
+                for(var i = 0; i<dados.length; i++){
+                    var artigo = document.createElement('p');
+                    var link = document.createElement('a');
+                    artigo.innerHTML=dados[i].title;
+                    link.href = dados[i].link;
+                    link.appendChild(artigo);
+                    resultados.appendChild(link);
+                }
             }
         })
         .catch(function (error) {
-        console.log(error);
+            console.log(error.response);
+            mensagemErro.innerHTML = '';
+            mensagemError_text.innerHTML = error.response.data.error;
+            mensagemErro.appendChild(mensagemError_text);
         })
-        .then(function () {
+    }
+});
+
+//////////////////////////////////
+
+document.querySelector('#register-api-b').addEventListener('click', function() {
+
+    var title = document.querySelector('#register-title-api').value;
+    var link = document.querySelector('#register-link-api').value;
+    var mensagemErro = document.getElementById('error-register');
+    var mensagemError_text = document.createElement('p');
+    
+    if(title.length<1){
+        mensagemErro.innerHTML = '';
+        mensagemError_text.innerHTML='O titulo deve conter pelo menos 1 caracter';
+        mensagemErro.appendChild(mensagemError_text);
+    }else if(link.length<1){
+        mensagemErro.innerHTML = '';
+        mensagemError_text.innerHTML='O link deve conter pelo menos 1 caracter';
+        mensagemErro.appendChild(mensagemError_text);
+    }
+    else{
+        axios.post('http://localhost:3000/api/article/register',{
+            title: title,
+            link: link,
+            token: localStorage.getItem('token')
+
+        })
+        .then(function(response){
+            console.log(response);
+            if(response.status === 200){   
+                mensagemErro.innerHTML = '';
+                mensagemError_text.innerHTML = 'Registro efetuado com sucesso!';
+                mensagemErro.appendChild(mensagemError_text);
+            }else if(response.status === 201){
+                mensagemErro.innerHTML = '';
+                mensagemError_text.innerHTML = response.data.error;
+                mensagemErro.appendChild(mensagemError_text);
+            }
+        })
+        .catch(function(error){
+            console.log(error.response);
+            mensagemErro.innerHTML = '';
+            mensagemError_text.innerHTML = error.response.data.error;
+            mensagemErro.appendChild(mensagemError_text);
         });
     }
 });
